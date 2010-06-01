@@ -4,7 +4,7 @@ use strict;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.03';
+    $VERSION     = '0.04';
     @ISA         = qw(Exporter);
     @EXPORT      = qw();
     @EXPORT_OK   = qw();
@@ -39,7 +39,7 @@ An interface for the store to communicate to a server using sync/async methods.
 
 An interface for message marshalling/unmarshalling messages. When a store sends a message, in asyncronous mode it will store a reference to the implemented message to unmarshall the next message.  
 
-=head2 Voldemort::Connection::Protobuff 
+=head2 Voldemort::Protobuff::Connection
 
 An implementation of Voldemort::Connection using Protocol Buffers.
 
@@ -136,7 +136,6 @@ Implementing your own resolver entails handling an array of Voldemort::ProtoBuff
         return (join ",", keys %result), \@nodeRecords;
     }
 
-head1 
 =head1 BUGS
 
 Zer are no bugs! (yet)

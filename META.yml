@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Voldemort
-version:            0.03
+version:            0.04
 abstract:           I like pants.
 author:
     - Spencer Portee (a.u.thor@a.galaxy.far.far.away)
