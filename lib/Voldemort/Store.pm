@@ -1,6 +1,5 @@
 package Voldemort::Store;
 
-use strict;
 use Moose;
 
 use Voldemort::ProtoBuff::Connection;
@@ -130,44 +129,47 @@ Key for puts, the value to store.
 =cut
 
 sub delete {
-    my ( $self, $params ) = @_;
-    my $store = $$params{'store'} || $self->default_store();
+    my ( $self, %params ) = @_;
+    my $store = $params{'store'} || $self->default_store();
 
     $self->_connect();
 
-    my $writer = $self->connection()->delete_handler();
     if ( $self->connection()->can_write(30) ) {
-        $writer->write( $self->connection(), $store, $$params{'key'},
-            $$params{'node'} );
+        my $writer = $self->connection()->delete_handler();
+
+        $writer->write( $self->connection(), $store, $params{'key'},
+            $params{'node'} );
         return $self->_handle_response($writer);
     }
     return;
 }
 
 sub get {
-    my ( $self, $params ) = @_;
-    my $store = $$params{'store'} || $self->default_store();
+    my ( $self, %params ) = @_;
+    my $store = $params{'store'} || $self->default_store();
 
     $self->_connect();
 
-    my $writer = $self->connection()->get_handler();
     if ( $self->connection()->can_write(30) ) {
-        $writer->write( $self->connection(), $store, $$params{'key'} );
+        my $writer = $self->connection()->get_handler();
+ 
+        $writer->write( $self->connection(), $store, $params{'key'} );
         return $self->_handle_response($writer);
     }
     return;
 }
 
 sub put {
-    my ( $self, $params ) = @_;
-    my $store = $$params{'store'} || $self->default_store();
+    my ( $self, %params ) = @_;
+    my $store = $params{'store'} || $self->default_store();
 
     $self->_connect();
 
-    my $writer = $self->connection()->put_handler();
     if ( $self->connection()->can_write(30) ) {
-        $writer->write( $self->connection(), $store, $$params{'key'},
-            $$params{'value'}, $$params{'node'} );
+        my $writer = $self->connection()->put_handler();
+
+        $writer->write( $self->connection(), $store, $params{'key'},
+            $params{'value'}, $params{'node'} );
 
         return $self->_handle_response($writer);
     }

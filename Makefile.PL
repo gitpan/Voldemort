@@ -6,11 +6,12 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME         => 'Voldemort',
     VERSION_FROM => 'lib/Voldemort.pm', # finds \$VERSION
-    AUTHOR       => 'Spencer Portee (a.u.thor@a.galaxy.far.far.away)',
+    AUTHOR       => 'Spencer Portee (exussum@gmail.com)',
     ABSTRACT     => 'I like pants.',
     PREREQ_PM    => {
-                     'Moose' => 1.02,
+                     'Moose' => 0.54,
                      'Test::Simple' => 0.44,
+                     'Test::More' => 0.88,
                      'Google::ProtocolBuffers' => 0.08
                     },
 );

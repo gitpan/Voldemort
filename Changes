@@ -4,4 +4,6 @@ Revision history for Perl module Voldemort
     - original version; created by ExtUtils::ModuleMaker 0.51
     - perltidy and perlcritic applied
 
-
+0.05 
+   - Fixed an issue where 0 data coming back from server on get 
+     resulted in dereferencing undef

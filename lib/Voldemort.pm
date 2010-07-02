@@ -4,7 +4,7 @@ use strict;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.04';
+    $VERSION     = '0.05';
     @ISA         = qw(Exporter);
     @EXPORT      = qw();
     @EXPORT_OK   = qw();
@@ -77,8 +77,8 @@ Implementing your own resolver entails handling an array of Voldemort::ProtoBuff
 
     my $store = new Voldemort::Store( connection => $connection  );
     $store->default_store('test');
-    $x->put({ key=>1, value=>'5' });
-    print $x->get({ key=>1 });
+    $x->put( key=>1, value=>'5' );
+    print $x->get( key=>1 );
 
 =head2 Quick start, vector clocks
 
@@ -90,8 +90,8 @@ Implementing your own resolver entails handling an array of Voldemort::ProtoBuff
      my $connection = Voldemort::ProtoBuff::Connection->new(
      'to' => 'localhost:6666',
      'get_handler' =>
-       Voldemort::ProtoBuff::GetMessage->new( { 
-        'resolver' => Foo->new() } )
+       Voldemort::ProtoBuff::GetMessage->new(  
+        'resolver' => Foo->new() )
      );
 
     my $store = Voldemort::Store->new( connection => $connection );

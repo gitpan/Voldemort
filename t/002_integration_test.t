@@ -1,5 +1,6 @@
-use Test::More skip_all => "Integration tests.";
-# tests => 5;
+use Test::More skip_all => "";
+
+#skip_all => "Integration tests.";
 
 use strict;
 use warnings;
@@ -9,38 +10,38 @@ use Voldemort::ProtoBuff::Connection;
 my $connection = Voldemort::ProtoBuff::Connection->new(
     'to' => 'localhost:6666',
     'get_handler' =>
-      Voldemort::ProtoBuff::GetMessage->new( { 'resolver' => Foo->new() } )
+      Voldemort::ProtoBuff::GetMessage->new( 'resolver' => Foo->new() )
 );
 
 my $store = Voldemort::Store->new( connection => $connection );
 $store->default_store('test');
 
-my ( $value, $nodes ) = $store->get( { 'key' => 'pizza' } );
+my ( $value, $nodes ) = $store->get( 'key' => 'pizza' );
 foreach my $node (@$nodes) {
-    $store->delete( { 'key' => 'pizza', 'node' => $node } );
+    $store->delete( 'key' => 'pizza', 'node' => $node );
 }
 
-
 ## test 1
-( $value, $nodes ) = $store->get( { 'key' => 'pizza' } );
-ok( !defined $value , 'Clean state' );
+( $value, $nodes ) = $store->get( 'key' => 'pizza' );
+ok( !defined $value, 'Clean state' );
 
 ## test 2
-$store->put( { 'key' => 'pizza', 'value' => 'pepers', 'node' => 3 } );
-( $value, $nodes ) = $store->get( { 'key' => 'pizza' } );
+$store->put( 'key' => 'pizza', 'value' => 'pepers', 'node' => 3 );
+( $value, $nodes ) = $store->get( 'key' => 'pizza' );
 ok( $value eq 'pepers', 'Put + get did the right thing' );
 
-$store->delete( { 'key' => 'pizza' } );
-( $value, $nodes ) = $store->get( { 'key' => 'pizza' } );
-ok( defined $value , 'Delete + get did the right thing ' );
+$store->delete( 'key' => 'pizza' );
+( $value, $nodes ) = $store->get( 'key' => 'pizza' );
+ok( defined $value, 'Delete + get did the right thing ' );
 
-$store->put( { 'key' => 'pizza', 'value' => 'ham,pineapple', 'node' => 1 } );
-$store->put( { 'key' => 'pizza', 'value' => 'pepers',        'node' => 3 } );
-$store->put( { 'key' => 'pizza', 'value' => 'pineapple',     'node' => 2 } );
+$store->put( 'key' => 'pizza', 'value' => 'ham,pineapple', 'node' => 1 );
+$store->put( 'key' => 'pizza', 'value' => 'pepers',        'node' => 3 );
+$store->put( 'key' => 'pizza', 'value' => 'pineapple',     'node' => 2 );
 
 my $storedPizza;
-( $storedPizza, $nodes ) = $store->get( { 'key' => 'pizza' } );
-ok( $storedPizza=~/pineapple/ and $storedPizza=~/pepers/, 'Resolver called properly' );
+( $storedPizza, $nodes ) = $store->get( 'key' => 'pizza' );
+ok( $storedPizza =~ /pineapple/ and $storedPizza =~ /pepers/,
+    'Resolver called properly' );
 ok( @$nodes == 3, 'Version count noted' );
 
 package Foo;

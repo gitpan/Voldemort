@@ -1,9 +1,9 @@
 --- #YAML:1.0
 name:               Voldemort
-version:            0.04
+version:            0.05
 abstract:           I like pants.
 author:
-    - Spencer Portee (a.u.thor@a.galaxy.far.far.away)
+    - Spencer Portee (exussum@gmail.com)
 license:            unknown
 distribution_type:  module
 configure_requires:
@@ -12,7 +12,8 @@ build_requires:
     ExtUtils::MakeMaker:  0
 requires:
     Google::ProtocolBuffers:  0.08
-    Moose:                1.02
+    Moose:                0.54
+    Test::More:           0.88
     Test::Simple:         0.44
 no_index:
     directory:

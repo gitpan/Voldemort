@@ -38,8 +38,6 @@ sub write {
 sub read {
     my $self       = shift;
     my $connection = shift;
-    my $store      = shift;
-    my $key        = shift;
 
     my $size = $connection->recv(4);
     $size = unpack( 'N', $size );
@@ -49,7 +47,8 @@ sub read {
         $data = Voldemort::ProtoBuff::Spec2::GetResponse->decode($data)
           || carp($!);
         $data = $data->versioned();
+        return $self->resolver()->resolve($data);
     }
-    return $self->resolver()->resolve($data);
+    return;
 }
 1;
