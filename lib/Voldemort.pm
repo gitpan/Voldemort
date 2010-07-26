@@ -4,7 +4,7 @@ use strict;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.05';
+    $VERSION     = '0.07';
     @ISA         = qw(Exporter);
     @EXPORT      = qw();
     @EXPORT_OK   = qw();
@@ -138,18 +138,16 @@ Implementing your own resolver entails handling an array of Voldemort::ProtoBuff
 
 =head1 BUGS
 
-Zer are no bugs! (yet)
+Zer are no more bugs! (for the moment)
 
 =head1 SUPPORT
 
 exussum@gmail.com
 
-
 =head1 AUTHOR
 
 Spencer Portee
 CPAN ID: EXUSSUM
-I like pants!
 exussum@gmail.com
 
 =head1 COPYRIGHT
