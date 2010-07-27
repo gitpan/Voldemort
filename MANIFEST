@@ -18,5 +18,8 @@ README
 scripts/example.pl
 t/001_load.t
 t/002_integration_test.t
+t/003_mock_sync_tests.t
+t/004_mock_async_tests.t
+t/005_protobuff_tests.t
 Todo
 META.yml                                 Module meta-data (added by MakeMaker)

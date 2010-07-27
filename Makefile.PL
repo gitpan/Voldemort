@@ -7,7 +7,6 @@ WriteMakefile(
     NAME         => 'Voldemort',
     VERSION_FROM => 'lib/Voldemort.pm', # finds \$VERSION
     AUTHOR       => 'Spencer Portee (exussum@gmail.com)',
-    ABSTRACT     => 'I like pants.',
     PREREQ_PM    => {
                      'Moose' => 0.54,
                      'Test::Simple' => 0.44,

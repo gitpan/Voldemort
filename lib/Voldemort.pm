@@ -4,7 +4,7 @@ use strict;
 BEGIN {
     use Exporter ();
     use vars qw($VERSION @ISA @EXPORT @EXPORT_OK %EXPORT_TAGS);
-    $VERSION     = '0.07';
+    $VERSION     = '0.11';
     @ISA         = qw(Exporter);
     @EXPORT      = qw();
     @EXPORT_OK   = qw();
@@ -149,6 +149,10 @@ exussum@gmail.com
 Spencer Portee
 CPAN ID: EXUSSUM
 exussum@gmail.com
+
+=head1 SOURCE
+
+http://bitbucket.org/exussum/pockito/
 
 =head1 COPYRIGHT
 
